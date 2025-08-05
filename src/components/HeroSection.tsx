@@ -29,20 +29,20 @@ const HeroSection = () => {
             {/* Background Elements */}
             <div
                 ref={backgroundRef}
-                className="absolute inset-0 z-0 transition-transform duration-500 ease-out"
+                className="absolute inset-[8px] z-0 transition-transform duration-500 ease-out"
                 style={{
                     willChange: 'transform',
-                    backgroundImage: `url('/uploads/bg.png')`,
+                    backgroundImage: `url('/uploads/bg9.png')`,
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center',
-                    filter: 'blur(4px)',
-                    opacity: 0.6,
+                    opacity: 0.7,
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
                 }}
             ></div>
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-start">
                     <div className="max-w-2xl">
                         <div className="flex items-center mb-4">
                             <div className="text-white rounded-full px-4 py-1 text-sm font-medium inline-flex items-center glassmorphism">
@@ -57,12 +57,7 @@ const HeroSection = () => {
                             Experience
                         </h1>
 
-                        <p
-                            className="text-xl text-white/90 mb-8 font-medium"
-                            style={{
-                                backgroundColor: 'rgba(0, 0, 0, 0.4)',
-                            }}
-                        >
+                        <p className="text-xl text-white/90 mb-8 font-medium">
                             Professional sound and lighting solutions that bring
                             your event to life. From concerts to private
                             parties, we deliver exceptional audiovisual

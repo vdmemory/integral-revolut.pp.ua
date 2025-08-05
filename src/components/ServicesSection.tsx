@@ -72,33 +72,39 @@ const ServicesSection = () => {
             icon: <Speaker size={24} />,
             title: 'PA Rental',
             description: 'Complete PA systems for events of any size.',
+            color: 'cadetblue',
         },
         {
             icon: <Mic size={24} />,
             title: 'Microphone Systems',
             description: 'Professional-grade wired and wireless microphones.',
+            color: 'lightcoral',
         },
         {
             icon: <MonitorSpeaker size={24} />,
             title: 'Studio Monitoring',
             description: 'High-quality monitoring for recording sessions.',
+            color: 'mediumseagreen',
         },
         {
             icon: <Wrench size={24} />,
             title: 'Technical Support',
             description:
                 'On-site technicians to ensure everything runs smoothly.',
+            color: 'goldenrod',
         },
         {
             icon: <Video size={24} />,
             title: 'Visual Equipment',
             description:
                 'Projectors, LED screens, and visual mapping solutions.',
+            color: 'orchid',
         },
         {
             icon: <Film size={24} />,
             title: 'Special Effects',
             description: 'Fog machines, CO2 jets, and other special effects.',
+            color: 'tomato',
         },
     ]
 
@@ -211,6 +217,7 @@ const ServicesSection = () => {
                                 className="glassmorphism p-6 card-hover animate-fade-in"
                                 style={{
                                     animationDelay: `${index * 50}ms`,
+                                    backgroundColor: service.color,
                                 }}
                             >
                                 <div className="text-psyco-green-DEFAULT mb-4">

@@ -15,6 +15,7 @@ import BlogSection from '@/components/BlogSection.tsx'
 import FeaturedSection from '@/components/FeaturedSection.tsx'
 import FaqSection from '@/components/FaqSection.tsx'
 import ContactsSection from '@/components/ContactsSection.tsx'
+import TestimonialSection from '@/components/TestimonialSection.tsx'
 
 const Index = () => {
     // Scroll to top on page load
@@ -58,6 +59,7 @@ const Index = () => {
             <ServicesSection />
             <BlogSection />
             <FeaturedSection />
+            <TestimonialSection />
             <FaqSection />
             <ContactsSection />
         </div>

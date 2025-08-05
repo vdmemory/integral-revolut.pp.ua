@@ -10,33 +10,6 @@ import {
 import ContactForm from '@/components/ContactForm.tsx'
 
 const ContactsSection = () => {
-    const bookingSteps = [
-        {
-            icon: <Calendar className="h-8 w-8" />,
-            title: 'Select a Date & Time',
-            description:
-                'Choose your preferred date and time from our availability calendar.',
-        },
-        {
-            icon: <MessageSquare className="h-8 w-8" />,
-            title: 'Tell Us About Your Event',
-            description:
-                'Provide details about your event type, venue, and specific requirements.',
-        },
-        {
-            icon: <Headphones className="h-8 w-8" />,
-            title: 'Consultation Call',
-            description:
-                'Our team will contact you to discuss your needs in detail.',
-        },
-        {
-            icon: <CheckCircle className="h-8 w-8" />,
-            title: 'Confirmation',
-            description:
-                'Receive your booking confirmation and prepare for an amazing event.',
-        },
-    ]
-
     return (
         <section className="py-20 px-6 md:px-12">
             <div className="max-w-7xl mx-auto">
@@ -61,7 +34,12 @@ const ContactsSection = () => {
                     </div>
 
                     <div className="max-w-7xl mx-auto flex-1 min-h-[714px]">
-                        <div className="glassmorphism p-8 md:p-12 h-full">
+                        <div
+                            className="glassmorphism p-8 md:p-12 h-full"
+                            style={{
+                                backgroundColor: 'cadetblue',
+                            }}
+                        >
                             <div className="grid grid-cols-1 md:grid-cols-1 gap-12">
                                 <div>
                                     <h2 className="text-3xl font-bold text-white mb-4">

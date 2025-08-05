@@ -36,36 +36,48 @@ const Navbar = () => {
     return (
         <nav
             className={cn(
-                'fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-6 md:px-12',
-                scrolled ? 'glassmorphism bg-opacity-80' : 'bg-transparent',
+                'fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4',
+                scrolled ? 'px-0 py-0' : 'px-12 py-4',
             )}
+            style={{ borderRadius: 0 }}
         >
-            <div className="max-w-7xl mx-auto flex items-center justify-between">
-                <NavLink to="/" className="flex items-center">
-                    <div className="h-20 w-auto md:h-28 md:w-auto relative">
+            <div
+                className={cn(
+                    'mx-auto flex items-center justify-between h-16 pr-6',
+                    scrolled ? 'backdrop-blur-lg' : 'bg-transparent',
+                )}
+                style={{
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                }}
+            >
+                <a href="#home" className="flex items-center">
+                    <div className="w-auto md:w-auto relative flex items-center space-x-2">
                         <img
-                            src="/lovable-uploads/5964f950-36a7-430c-a887-4eea91ad4973.png"
-                            alt="PSK Services Logo"
-                            className="h-full w-auto object-contain"
+                            src="/uploads/logo.png"
+                            alt="Logo"
+                            className="h-[80px] w-auto object-contain"
                         />
+
+                        <h1 className="text-2xl font-bold lg:leading-[1.7] md:leading-[1.7]">
+                            <span className="text-theme-green">INTEGRAL</span>{' '}
+                            <span className="text-theme-yellow">REVOLUT</span>{' '}
+                            <span className="text-theme-blue">EOOD</span>{' '}
+                        </h1>
                     </div>
-                </NavLink>
+                </a>
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex items-center space-x-8">
                     {navLinks.map((link) => (
-                        <NavLink
+                        <a
                             key={link.path}
-                            to={link.path}
-                            className={({ isActive }) =>
-                                cn(
-                                    'text-white hover:text-green-400 transition-colors duration-300 link-hover text-sm font-medium tracking-wide',
-                                    isActive && 'text-green-500 after:w-full',
-                                )
-                            }
+                            href={link.path}
+                            className={cn(
+                                'text-white hover:text-green-400 link-hover text-sm font-medium tracking-wide',
+                            )}
                         >
                             {link.name}
-                        </NavLink>
+                        </a>
                     ))}
                 </div>
 
@@ -87,18 +99,18 @@ const Navbar = () => {
             >
                 <div className="flex flex-col space-y-4">
                     {navLinks.map((link) => (
-                        <NavLink
+                        <a
                             key={link.path}
-                            to={link.path}
-                            className={({ isActive }) =>
-                                cn(
-                                    'text-white hover:text-green-400 py-2 text-xl transition-colors duration-300',
-                                    isActive && 'text-green-500',
-                                )
-                            }
+                            href={link.path}
+                            className={cn(
+                                'text-white hover:text-green-400 py-2 text-xl',
+                            )}
+                            onClick={() => {
+                                setIsOpen(false)
+                            }}
                         >
                             {link.name}
-                        </NavLink>
+                        </a>
                     ))}
                 </div>
             </div>

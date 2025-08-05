@@ -64,7 +64,12 @@ const ContactForm = () => {
 
     return (
         <div className="grid gap-8 md:grid-cols-1">
-            <div className="glassmorphism p-6 animate-fade-in animation-delay-100">
+            <div
+                className="glassmorphism p-6 animate-fade-in animation-delay-100"
+                style={{
+                    backgroundColor: 'darkseagreen',
+                }}
+            >
                 <div className="flex items-center space-x-2 mb-4">
                     <div>
                         <h2 className="text-3xl font-bold text-white mb-4">
@@ -168,7 +173,7 @@ const ContactForm = () => {
 
                     <Button
                         type="submit"
-                        className="w-full bg-psyco-green-DEFAULT hover:bg-psyco-green-dark transition-colors"
+                        className="btn-glow text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center relative z-10 shadow-lg"
                     >
                         Request Booking
                     </Button>

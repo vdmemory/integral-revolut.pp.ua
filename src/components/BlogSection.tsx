@@ -15,6 +15,7 @@ const BlogSection = () => {
             imageSrc:
                 '/lovable-uploads/8dced82a-6a2c-48ee-a060-463c28764183.png',
             featured: true,
+            color: 'mediumseagreen',
         },
         {
             id: '2',
@@ -27,6 +28,7 @@ const BlogSection = () => {
             category: 'Lighting',
             imageSrc:
                 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80',
+            color: 'cornflowerblue',
         },
         {
             id: '3',
@@ -39,6 +41,7 @@ const BlogSection = () => {
             category: 'DJ',
             imageSrc:
                 'https://images.unsplash.com/photo-1571266087814-e7360f035f25?auto=format&fit=crop&q=80',
+            color: 'orangered',
         },
         {
             id: '4',
@@ -51,6 +54,7 @@ const BlogSection = () => {
             category: 'Sound',
             imageSrc:
                 'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&q=80',
+            color: 'goldenrod',
         },
         {
             id: '5',
@@ -63,6 +67,7 @@ const BlogSection = () => {
             category: 'Lighting',
             imageSrc:
                 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80',
+            color: 'mediumorchid',
         },
     ]
 

@@ -1,7 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import { MoveRight, Sparkles } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const HeroSection = () => {
+    const { t } = useLanguage()
     const backgroundRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -42,45 +45,77 @@ const HeroSection = () => {
             ></div>
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col items-start">
+                <motion.div 
+                    className="flex flex-col items-start"
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                >
                     <div className="max-w-2xl">
-                        <div className="flex items-center mb-4">
-                            <div className="text-white rounded-full px-4 py-1 text-sm font-medium inline-flex items-center glassmorphism">
+                        <motion.div 
+                            className="flex items-center mb-4"
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                        >
+                            <motion.div 
+                                className="text-white rounded-full px-4 py-1 text-sm font-medium inline-flex items-center glassmorphism"
+                                whileHover={{ scale: 1.05 }}
+                                transition={{ type: "spring", stiffness: 300 }}
+                            >
                                 <Sparkles className="h-3.5 w-3.5 mr-1 text-theme-yellow" />
-                                Premium Sound & Light Services
-                            </div>
-                        </div>
+                                {t('hero.badge')}
+                            </motion.div>
+                        </motion.div>
 
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold lg:leading-[1.7] md:leading-[1.7] text-glow mb-6 ">
-                            Elevate Your{' '}
-                            <span className="text-theme-yellow">Event</span>{' '}
-                            Experience
-                        </h1>
+                        <motion.h1 
+                            className="text-4xl md:text-5xl lg:text-6xl font-bold lg:leading-[1.7] md:leading-[1.7] text-glow mb-6"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                        >
+                            {t('hero.title')}{' '}
+                            <span className="text-theme-yellow">Программного</span>{' '}
+                            {t('hero.title.highlight')}
+                        </motion.h1>
 
-                        <p className="text-xl text-white/90 mb-8 font-medium">
-                            Professional sound and lighting solutions that bring
-                            your event to life. From concerts to private
-                            parties, we deliver exceptional audiovisual
-                            experiences.
-                        </p>
+                        <motion.p 
+                            className="text-xl text-white/90 mb-8 font-medium"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.6 }}
+                        >
+                            {t('hero.description')}
+                        </motion.p>
 
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <a
+                        <motion.div 
+                            className="flex flex-col sm:flex-row gap-4"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.8 }}
+                        >
+                            <motion.a
                                 href="#contacts"
                                 className="btn-glow text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center relative z-10 shadow-lg"
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                                transition={{ type: "spring", stiffness: 300 }}
                             >
-                                Get in Touch
+                                {t('hero.contact')}
                                 <MoveRight className="ml-2 h-5 w-5" />
-                            </a>
-                            <a
+                            </motion.a>
+                            <motion.a
                                 href="#services"
                                 className="bg-gradient-to-r from-theme-teal to-theme-cyan text-white hover:from-theme-cyan hover:to-theme-blue font-bold py-3 px-8 rounded-lg transition-all duration-300 flex items-center justify-center shadow-lg"
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                                transition={{ type: "spring", stiffness: 300 }}
                             >
-                                Our Services
-                            </a>
-                        </div>
+                                {t('hero.services')}
+                            </motion.a>
+                        </motion.div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
     )

@@ -25,7 +25,10 @@ const TestimonialCard = ({
 }: TestimonialCardProps) => {
     return (
         <div
-            className={cn('glassmorphism p-6 relative card-hover', className)}
+            className={cn(
+                'glassmorphism p-6 relative card-hover min-h-[204px]',
+                className,
+            )}
             style={{
                 backgroundColor: color,
             }}

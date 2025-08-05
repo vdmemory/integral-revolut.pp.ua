@@ -4,8 +4,10 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { format } from 'date-fns'
 import { toast } from '@/hooks/use-toast'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const ContactForm = () => {
+    const { t } = useLanguage()
     const [date, setDate] = useState<Date | undefined>(undefined)
     const [timeSlot, setTimeSlot] = useState<string>('')
     const [eventType, setEventType] = useState<string>('')
@@ -72,14 +74,8 @@ const ContactForm = () => {
             >
                 <div className="flex items-center space-x-2 mb-4">
                     <div>
-                        <h2 className="text-3xl font-bold text-white mb-4">
-                            Contact Us
-                        </h2>
-                        <p className="text-gray-300 mb-6">
-                            Fill out the form below to request a booking for
-                            your event. Our team will get back to you within 24
-                            hours to confirm availability and discuss details.
-                        </p>
+                        <h2 className="text-3xl font-bold text-white mb-4">{t('contact.title')}</h2>
+                        <p className="text-gray-300 mb-6">{t('contact.description')}</p>
                     </div>
                 </div>
 
@@ -89,7 +85,7 @@ const ContactForm = () => {
                             htmlFor="name"
                             className="block text-gray-300 mb-1"
                         >
-                            Name
+                            {t('contact.name')}
                         </label>
                         <Input
                             id="name"
@@ -106,7 +102,7 @@ const ContactForm = () => {
                             htmlFor="email"
                             className="block text-gray-300 mb-1"
                         >
-                            Email
+                            {t('contact.email')}
                         </label>
                         <Input
                             id="email"
@@ -124,7 +120,7 @@ const ContactForm = () => {
                             htmlFor="phone"
                             className="block text-gray-300 mb-1"
                         >
-                            Phone
+                            {t('contact.phone')}
                         </label>
                         <Input
                             id="phone"
@@ -141,11 +137,11 @@ const ContactForm = () => {
                             htmlFor="location"
                             className="block text-gray-300 mb-1"
                         >
-                            Event Location
+                            {t('contact.company')}
                         </label>
                         <Input
-                            id="location"
-                            name="location"
+                            id="company"
+                            name="company"
                             value={formData.location}
                             onChange={handleInputChange}
                             required
@@ -158,7 +154,7 @@ const ContactForm = () => {
                             htmlFor="details"
                             className="block text-gray-300 mb-1"
                         >
-                            Event Details
+                            {t('contact.project')}
                         </label>
                         <Textarea
                             id="details"
@@ -167,7 +163,7 @@ const ContactForm = () => {
                             value={formData.details}
                             onChange={handleInputChange}
                             className="bg-psyco-black-light border-psyco-green-muted/50"
-                            placeholder="Please provide any specific requirements or details about your event"
+                            placeholder={t('contact.project.placeholder')}
                         />
                     </div>
 
@@ -175,7 +171,7 @@ const ContactForm = () => {
                         type="submit"
                         className="btn-glow text-white font-bold py-3 px-8 rounded-lg flex items-center justify-center relative z-10 shadow-lg"
                     >
-                        Request Booking
+                        {t('contact.submit')}
                     </Button>
                 </form>
             </div>

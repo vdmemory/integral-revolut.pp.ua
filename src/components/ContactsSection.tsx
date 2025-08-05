@@ -1,39 +1,88 @@
 import React from 'react'
-import {
-    Calendar,
-    CheckCircle,
-    Clock,
-    Headphones,
-    MessageSquare,
-    MoveRight,
-} from 'lucide-react'
+import { CheckCircle, Clock } from 'lucide-react'
 import ContactForm from '@/components/ContactForm.tsx'
+import { easeOut, motion } from 'framer-motion'
+import { useLanguage } from '@/contexts/LanguageContext'
+import { configCompany } from '@/lib/configCompany.ts'
 
 const ContactsSection = () => {
-    return (
-        <section className="py-20 px-6 md:px-12">
-            <div className="max-w-7xl mx-auto">
-                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12">
-                    <div>
-                        <h2 className="text-3xl font-bold text-white mb-2">
-                            Select a Date & Time
-                        </h2>
-                        <p className="text-gray-400 max-w-2xl">
-                            Choose from our available slots and tell us about
-                            your event
-                        </p>
-                    </div>
-                </div>
+    const { t } = useLanguage()
 
-                <section
+    const sectionVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.8,
+                ease: easeOut,
+            },
+        },
+    }
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: easeOut,
+            },
+        },
+    }
+
+    return (
+        <motion.section
+            className="py-20 px-6 md:px-12"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={sectionVariants}
+        >
+            <div className="max-w-7xl mx-auto">
+                <motion.div
+                    className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12"
+                    variants={itemVariants}
+                >
+                    <div>
+                        <motion.h2
+                            className="text-3xl font-bold text-white mb-2"
+                            variants={itemVariants}
+                        >
+                            {t('contact.title')}
+                        </motion.h2>
+                        <motion.p
+                            className="text-gray-400 max-w-2xl"
+                            variants={itemVariants}
+                        >
+                            {t('contact.description')}
+                        </motion.p>
+                    </div>
+                </motion.div>
+
+                <motion.section
                     id={'contacts'}
                     className="bg-psyco-black-light flex gap-8"
+                    variants={itemVariants}
                 >
-                    <div className="max-w-7xl mx-auto flex-1 min-h-[714px]">
+                    <motion.div
+                        className="max-w-7xl mx-auto flex-1 min-h-[714px]"
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                    >
                         <ContactForm />
-                    </div>
+                    </motion.div>
 
-                    <div className="max-w-7xl mx-auto flex-1 min-h-[714px]">
+                    <motion.div
+                        className="max-w-7xl mx-auto flex-1 min-h-[714px]"
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                    >
                         <div
                             className="glassmorphism p-8 md:p-12 h-full"
                             style={{
@@ -41,92 +90,161 @@ const ContactsSection = () => {
                             }}
                         >
                             <div className="grid grid-cols-1 md:grid-cols-1 gap-12">
-                                <div>
-                                    <h2 className="text-3xl font-bold text-white mb-4">
-                                        Need to Speak With Us Directly?
-                                    </h2>
-                                    <p className="text-gray-300 mb-6">
-                                        If you have specific questions or prefer
-                                        to discuss your requirements over the
-                                        phone, our team is here to help.
-                                    </p>
+                                <motion.div
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, delay: 0.6 }}
+                                >
+                                    <motion.h2
+                                        className="text-3xl font-bold text-white mb-4"
+                                        variants={itemVariants}
+                                    >
+                                        {t('contact.direct.title')}
+                                    </motion.h2>
+                                    <motion.p
+                                        className="text-gray-300 mb-6"
+                                        variants={itemVariants}
+                                    >
+                                        {t('contact.direct.description')}
+                                    </motion.p>
 
-                                    <div className="space-y-4">
-                                        <div className="flex items-center space-x-3">
+                                    <motion.div
+                                        className="space-y-4"
+                                        variants={itemVariants}
+                                    >
+                                        <motion.div
+                                            className="flex items-center space-x-3"
+                                            whileHover={{ x: 5 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
                                             <Phone className="h-5 w-5 text-psyco-green-DEFAULT" />
                                             <span className="text-white">
-                                                +44 123 456 7890
+                                                {configCompany.phone}
                                             </span>
-                                        </div>
+                                        </motion.div>
 
-                                        <div className="flex items-center space-x-3">
+                                        <motion.div
+                                            className="flex items-center space-x-3"
+                                            whileHover={{ x: 5 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
                                             <Mail className="h-5 w-5 text-psyco-green-DEFAULT" />
                                             <span className="text-white">
-                                                booking@psycotikcrew.com
+                                                {configCompany.email}
                                             </span>
-                                        </div>
+                                        </motion.div>
 
-                                        <div className="flex items-center space-x-3">
+                                        <motion.div
+                                            className="flex items-center space-x-3"
+                                            whileHover={{ x: 5 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
                                             <Clock className="h-5 w-5 text-psyco-green-DEFAULT" />
                                             <span className="text-white">
-                                                Mon-Fri: 9am-6pm | Sat: 10am-4pm
+                                                {t('contact.time')}
                                             </span>
-                                        </div>
-                                    </div>
-                                </div>
+                                        </motion.div>
+                                    </motion.div>
+                                </motion.div>
 
-                                <div className="flex flex-col justify-center space-y-6">
-                                    <div className="flex items-start space-x-4">
-                                        <div className="bg-psyco-green-DEFAULT/20 p-3 rounded-lg">
+                                <motion.div
+                                    className="flex flex-col justify-center space-y-6"
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, delay: 0.8 }}
+                                >
+                                    <motion.div
+                                        className="flex items-start space-x-4"
+                                        whileHover={{ x: 5 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <motion.div
+                                            className="bg-psyco-green-DEFAULT/20 p-3 rounded-lg"
+                                            whileHover={{
+                                                scale: 1.1,
+                                                rotate: 5,
+                                            }}
+                                            transition={{
+                                                type: 'spring',
+                                                stiffness: 300,
+                                            }}
+                                        >
                                             <CheckCircle className="h-6 w-6 text-psyco-green-DEFAULT" />
-                                        </div>
+                                        </motion.div>
                                         <div>
                                             <h3 className="text-lg font-medium text-white mb-1">
-                                                Emergency Support
+                                                {t('contact.text.title')}
                                             </h3>
                                             <p className="text-gray-300">
-                                                24/7 support line for existing
-                                                bookings
+                                                {t('contact.text.description')}
                                             </p>
                                         </div>
-                                    </div>
+                                    </motion.div>
 
-                                    <div className="flex items-start space-x-4">
-                                        <div className="bg-psyco-green-DEFAULT/20 p-3 rounded-lg">
+                                    <motion.div
+                                        className="flex items-start space-x-4"
+                                        whileHover={{ x: 5 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <motion.div
+                                            className="bg-psyco-green-DEFAULT/20 p-3 rounded-lg"
+                                            whileHover={{
+                                                scale: 1.1,
+                                                rotate: 5,
+                                            }}
+                                            transition={{
+                                                type: 'spring',
+                                                stiffness: 300,
+                                            }}
+                                        >
                                             <CheckCircle className="h-6 w-6 text-psyco-green-DEFAULT" />
-                                        </div>
+                                        </motion.div>
                                         <div>
                                             <h3 className="text-lg font-medium text-white mb-1">
-                                                Custom Packages
+                                                {t('contact.text.title2')}
                                             </h3>
                                             <p className="text-gray-300">
-                                                Speak with our team about
-                                                bespoke solutions
+                                                {t('contact.text.description2')}
                                             </p>
                                         </div>
-                                    </div>
+                                    </motion.div>
 
-                                    <div className="flex items-start space-x-4">
-                                        <div className="bg-psyco-green-DEFAULT/20 p-3 rounded-lg">
+                                    <motion.div
+                                        className="flex items-start space-x-4"
+                                        whileHover={{ x: 5 }}
+                                        transition={{ duration: 0.2 }}
+                                    >
+                                        <motion.div
+                                            className="bg-psyco-green-DEFAULT/20 p-3 rounded-lg"
+                                            whileHover={{
+                                                scale: 1.1,
+                                                rotate: 5,
+                                            }}
+                                            transition={{
+                                                type: 'spring',
+                                                stiffness: 300,
+                                            }}
+                                        >
                                             <CheckCircle className="h-6 w-6 text-psyco-green-DEFAULT" />
-                                        </div>
+                                        </motion.div>
                                         <div>
                                             <h3 className="text-lg font-medium text-white mb-1">
-                                                Site Visits
+                                                {t('contact.text.title3')}
                                             </h3>
                                             <p className="text-gray-300">
-                                                Request a venue assessment
-                                                before your event
+                                                {t('contact.text.description3')}
                                             </p>
                                         </div>
-                                    </div>
-                                </div>
+                                    </motion.div>
+                                </motion.div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </motion.div>
+                </motion.section>
             </div>
-        </section>
+        </motion.section>
     )
 }
 

@@ -1,109 +1,168 @@
 import { Link } from 'react-router-dom'
+import { easeOut, motion } from 'framer-motion'
 import {
     CalendarDays,
-    Film,
-    Lightbulb,
-    Mic,
-    MonitorSpeaker,
+    Code,
+    Shield,
+    Smartphone,
+    Globe,
     MoveRight,
-    Music2,
-    PartyPopper,
-    Speaker,
-    Video,
-    Volume2,
-    Wrench,
+    Database,
+    Server,
+    Lock,
+    Monitor,
+    Cloud,
+    Settings,
 } from 'lucide-react'
 import ServiceCard from '@/components/ServiceCard.tsx'
 import React from 'react'
+import { useLanguage } from '@/contexts/LanguageContext'
 
 const ServicesSection = () => {
+    const { t } = useLanguage()
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.1,
+            },
+        },
+    }
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: easeOut,
+            },
+        },
+    }
+
+    const sectionVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.8,
+                ease: easeOut,
+            },
+        },
+    }
+
+    const imageVariants = {
+        hidden: { opacity: 0, scale: 0.8 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                duration: 0.8,
+                ease: easeOut,
+            },
+        },
+    }
+
+    const featureVariants = {
+        hidden: { opacity: 0, x: -20 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 0.5,
+                ease: easeOut,
+            },
+        },
+    }
+
     const mainServices = [
         {
-            id: 'sound',
-            icon: <Volume2 size={32} />,
-            title: 'Sound System',
-            description:
-                'Professional sound setups tailored to your venue and event size. From intimate gatherings to large festival spaces, we provide crystal-clear audio with expert setup and operation.',
-            image: '/lovable-uploads/708f9e32-840d-46a4-aaa4-75ad2689e16f.png',
+            id: 'web-development',
+            icon: <Globe size={32} />,
+            title: t('services.web.title'),
+            description: t('services.web.description'),
+            image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&q=80',
             features: [
-                '6x Funktion One Res E4',
-                '4x Martin Audio Bass Bin 215',
-                '8x KWS Pi-Horn sub',
-                'powered by 5x Labgruppen PLM 20000Q',
-                'complete cabling and power management',
+                'React, Vue.js, Angular',
+                'Node.js, Python, PHP',
+                'Responsive Design',
+                'SEO Optimization',
+                'API Integration',
+                'Content Management System',
             ],
         },
         {
-            id: 'lighting',
-            icon: <Lightbulb size={32} />,
-            title: 'Lighting Equipment',
-            description:
-                'Create the perfect atmosphere with our state-of-the-art lighting equipment. From subtle ambient lighting to dynamic stage shows, we design and operate custom lighting solutions.',
-            image: '/lovable-uploads/becfc2e3-b59f-4f86-afca-b9f6fc7b7c14.png',
+            id: 'mobile-development',
+            icon: <Smartphone size={32} />,
+            title: t('services.mobile.title'),
+            description: t('services.mobile.description'),
+            image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80',
             features: [
-                'Moving head fixtures',
-                'LED wash lights',
-                'Beam effects',
-                'Stage spotlights',
-                'Laser systems',
-                'DMX controllers and programming',
+                'React Native, Flutter',
+                'iOS (Swift), Android (Kotlin)',
+                'Cloud Services Integration',
+                'Push Notifications',
+                'Offline Mode',
+                'App Store & Google Play Publishing',
             ],
         },
         {
-            id: 'dj',
-            icon: <Music2 size={32} />,
-            title: 'DJ Services',
-            description:
-                "Our professional DJs bring the right energy to your event with perfect music selection and mixing. We work with you to create custom playlists that match your event's vibe and audience.",
-            image: 'https://images.unsplash.com/photo-1516873240891-4bf014728d44?auto=format&fit=crop&q=80',
+            id: 'security',
+            icon: <Shield size={32} />,
+            title: t('services.security.title'),
+            description: t('services.security.description'),
+            image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80',
             features: [
-                'Experienced professional DJs',
-                'High-quality controllers and equipment',
-                'Extensive music library',
-                'Custom playlist creation',
-                'Seamless mixing',
-                'MC services available',
+                'Security Audit',
+                'Cyber Attack Protection',
+                'Data Encryption',
+                'Authentication Systems',
+                'GDPR Compliance',
+                '24/7 Security Monitoring',
             ],
         },
     ]
 
     const additionalServices = [
         {
-            icon: <Speaker size={24} />,
-            title: 'PA Rental',
-            description: 'Complete PA systems for events of any size.',
+            icon: <Database size={24} />,
+            title: t('services.database'),
+            description: t('services.database.desc'),
             color: 'cadetblue',
         },
         {
-            icon: <Mic size={24} />,
-            title: 'Microphone Systems',
-            description: 'Professional-grade wired and wireless microphones.',
+            icon: <Cloud size={24} />,
+            title: t('services.cloud'),
+            description: t('services.cloud.desc'),
             color: 'lightcoral',
         },
         {
-            icon: <MonitorSpeaker size={24} />,
-            title: 'Studio Monitoring',
-            description: 'High-quality monitoring for recording sessions.',
+            icon: <Server size={24} />,
+            title: t('services.devops'),
+            description: t('services.devops.desc'),
             color: 'mediumseagreen',
         },
         {
-            icon: <Wrench size={24} />,
-            title: 'Technical Support',
-            description:
-                'On-site technicians to ensure everything runs smoothly.',
+            icon: <Settings size={24} />,
+            title: t('services.support'),
+            description: t('services.support.desc'),
             color: 'goldenrod',
         },
         {
-            icon: <Video size={24} />,
-            title: 'Visual Equipment',
-            description:
-                'Projectors, LED screens, and visual mapping solutions.',
+            icon: <Monitor size={24} />,
+            title: t('services.design'),
+            description: t('services.design.desc'),
             color: 'orchid',
         },
         {
-            icon: <Film size={24} />,
-            title: 'Special Effects',
-            description: 'Fog machines, CO2 jets, and other special effects.',
+            icon: <Lock size={24} />,
+            title: t('services.blockchain'),
+            description: t('services.blockchain.desc'),
             color: 'tomato',
         },
     ]
@@ -111,64 +170,127 @@ const ServicesSection = () => {
     return (
         <>
             {/* Main Services */}
-            <section id={'services'} className="py-20 px-6 md:px-12">
+            <motion.section
+                id={'services'}
+                className="py-20 px-6 md:px-12"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={sectionVariants}
+            >
                 <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12">
+                    <motion.div
+                        className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12"
+                        variants={itemVariants}
+                    >
                         <div>
-                            <h2 className="text-3xl font-bold text-white mb-2">
-                                Our Services
-                            </h2>
-                            <p className="text-gray-400 max-w-2xl">
-                                Professional equipment and expert technicians
-                                for all your sound and lighting needs
-                            </p>
+                            <motion.h2
+                                className="text-3xl font-bold text-white mb-2"
+                                variants={itemVariants}
+                            >
+                                {t('services.title')}
+                            </motion.h2>
+                            <motion.p
+                                className="text-gray-400 max-w-2xl"
+                                variants={itemVariants}
+                            >
+                                {t('services.description')}
+                            </motion.p>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {mainServices.map((service, index) => (
-                        <div
+                        <motion.div
                             key={service.id}
                             id={service.id}
                             className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 mb-20 last:mb-0 animate-fade-in`}
-                            style={{ animationDelay: `${index * 100}ms` }}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.3 }}
+                            variants={containerVariants}
                         >
-                            <div className="w-full lg:w-1/2">
+                            <motion.div
+                                className="w-full lg:w-1/2"
+                                variants={imageVariants}
+                            >
                                 <div className="glassmorphism p-1 rounded-2xl h-full">
                                     <div className="relative w-full h-full overflow-hidden rounded-xl">
-                                        <img
+                                        <motion.img
                                             src={service.image}
                                             alt={service.title}
                                             className="object-cover w-full h-full aspect-video lg:aspect-auto transition-transform duration-10000 hover:scale-110"
+                                            whileHover={{ scale: 1.05 }}
+                                            transition={{ duration: 0.3 }}
                                         />
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
 
-                            <div className="w-full lg:w-1/2 flex flex-col justify-center">
-                                <div className="text-psyco-green-DEFAULT mb-4">
+                            <motion.div
+                                className="w-full lg:w-1/2 flex flex-col justify-center"
+                                variants={itemVariants}
+                            >
+                                <motion.div
+                                    className="text-psyco-green-DEFAULT mb-4"
+                                    variants={itemVariants}
+                                    whileHover={{ scale: 1.1, rotate: 5 }}
+                                    transition={{
+                                        type: 'spring',
+                                        stiffness: 300,
+                                    }}
+                                >
                                     {service.icon}
-                                </div>
-                                <h3 className="text-2xl font-semibold text-white mb-4">
+                                </motion.div>
+                                <motion.h3
+                                    className="text-2xl font-semibold text-white mb-4"
+                                    variants={itemVariants}
+                                >
                                     {service.title}
-                                </h3>
-                                <p className="text-gray-300 mb-6">
+                                </motion.h3>
+                                <motion.p
+                                    className="text-gray-300 mb-6"
+                                    variants={itemVariants}
+                                >
                                     {service.description}
-                                </p>
+                                </motion.p>
 
-                                <div className="bg-psyco-black-light rounded-xl p-6">
-                                    <h4 className="text-lg font-medium text-white mb-4">
-                                        {service.id === 'sound'
-                                            ? 'Our Equipment:'
-                                            : "What's Included:"}
-                                    </h4>
-                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <motion.div
+                                    className="bg-psyco-black-light rounded-xl p-6"
+                                    variants={itemVariants}
+                                >
+                                    <motion.h4
+                                        className="text-lg font-medium text-white mb-4"
+                                        variants={itemVariants}
+                                    >
+                                        {service.id === 'web-development'
+                                            ? t('services.technologies')
+                                            : t('services.included')}
+                                    </motion.h4>
+                                    <motion.ul
+                                        className="grid grid-cols-1 md:grid-cols-2 gap-3"
+                                        variants={containerVariants}
+                                    >
                                         {service.features.map(
                                             (feature, idx) => (
-                                                <li
+                                                <motion.li
                                                     key={idx}
                                                     className="flex items-start"
+                                                    variants={featureVariants}
+                                                    whileHover={{ x: 5 }}
+                                                    transition={{
+                                                        duration: 0.2,
+                                                    }}
                                                 >
-                                                    <div className="text-psyco-green-DEFAULT mt-1 mr-2">
+                                                    <motion.div
+                                                        className="text-psyco-green-DEFAULT mt-1 mr-2"
+                                                        whileHover={{
+                                                            scale: 1.2,
+                                                        }}
+                                                        transition={{
+                                                            type: 'spring',
+                                                            stiffness: 400,
+                                                        }}
+                                                    >
                                                         <svg
                                                             width="16"
                                                             height="16"
@@ -181,59 +303,101 @@ const ServicesSection = () => {
                                                                 fill="currentColor"
                                                             />
                                                         </svg>
-                                                    </div>
+                                                    </motion.div>
                                                     <span className="text-gray-300">
                                                         {feature}
                                                     </span>
-                                                </li>
+                                                </motion.li>
                                             ),
                                         )}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                                    </motion.ul>
+                                </motion.div>
+                            </motion.div>
+                        </motion.div>
                     ))}
                 </div>
-            </section>
+            </motion.section>
             {/* Additional Services */}
-            <section className="py-20 px-6 md:px-12 bg-psyco-black-light">
+            <motion.section
+                className="py-20 px-6 md:px-12 bg-psyco-black-light"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+                variants={sectionVariants}
+            >
                 <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12">
+                    <motion.div
+                        className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-12"
+                        variants={itemVariants}
+                    >
                         <div>
-                            <h2 className="text-3xl font-bold text-white mb-2">
-                                Additional Services
-                            </h2>
-                            <p className="text-gray-400 max-w-2xl">
-                                Specialized equipment and services to enhance
-                                your event
-                            </p>
+                            <motion.h2
+                                className="text-3xl font-bold text-white mb-2"
+                                variants={itemVariants}
+                            >
+                                {t('services.additional.title')}
+                            </motion.h2>
+                            <motion.p
+                                className="text-gray-400 max-w-2xl"
+                                variants={itemVariants}
+                            >
+                                {t('services.additional.description')}
+                            </motion.p>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <motion.div
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
+                    >
                         {additionalServices.map((service, index) => (
-                            <div
+                            <motion.div
                                 key={index}
                                 className="glassmorphism p-6 card-hover animate-fade-in"
-                                style={{
-                                    animationDelay: `${index * 50}ms`,
-                                    backgroundColor: service.color,
+                                style={{ backgroundColor: service.color }}
+                                variants={itemVariants}
+                                whileHover={{
+                                    scale: 1.05,
+                                    y: -5,
+                                    transition: { duration: 0.3 },
                                 }}
                             >
-                                <div className="text-psyco-green-DEFAULT mb-4">
+                                <motion.div
+                                    className="text-psyco-green-DEFAULT mb-4"
+                                    whileHover={{ scale: 1.1, rotate: 5 }}
+                                    transition={{
+                                        type: 'spring',
+                                        stiffness: 300,
+                                    }}
+                                >
                                     {service.icon}
-                                </div>
-                                <h3 className="text-xl font-medium text-white mb-2">
+                                </motion.div>
+                                <motion.h3
+                                    className="text-xl font-medium text-white mb-2"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: 0.2 }}
+                                >
                                     {service.title}
-                                </h3>
-                                <p className="text-gray-300">
+                                </motion.h3>
+                                <motion.p
+                                    className="text-gray-300"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: 0.3 }}
+                                >
                                     {service.description}
-                                </p>
-                            </div>
+                                </motion.p>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
-            </section>
+            </motion.section>
         </>
     )
 }

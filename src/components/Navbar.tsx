@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useLanguage } from '@/contexts/LanguageContext'
+import LanguageSwitcher from './LanguageSwitcher'
+import SocialLinks from '@/components/SocialLinks.tsx'
 
 const Navbar = () => {
+    const { t } = useLanguage()
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
     const location = useLocation()
@@ -26,11 +30,11 @@ const Navbar = () => {
     }, [location.pathname])
 
     const navLinks = [
-        { name: 'Home', path: '#home' },
-        { name: 'Services', path: '#services' },
-        { name: 'Blog', path: '#blog' },
-        { name: 'Faq', path: '#faq' },
-        { name: 'Contacts', path: '#contacts' },
+        { name: t('nav.home'), path: '#home' },
+        { name: t('nav.services'), path: '#services' },
+        { name: t('nav.blog'), path: '#blog' },
+        { name: t('nav.faq'), path: '#faq' },
+        { name: t('nav.contacts'), path: '#contacts' },
     ]
 
     return (
@@ -60,8 +64,9 @@ const Navbar = () => {
 
                         <h1 className="text-2xl font-bold lg:leading-[1.7] md:leading-[1.7]">
                             <span className="text-theme-green">INTEGRAL</span>{' '}
-                            <span className="text-theme-yellow">REVOLUT</span>{' '}
-                            <span className="text-theme-blue">EOOD</span>{' '}
+                            <span className="text-theme-yellow">
+                                REVOLUT
+                            </span>{' '}
                         </h1>
                     </div>
                 </a>
@@ -79,6 +84,8 @@ const Navbar = () => {
                             {link.name}
                         </a>
                     ))}
+                    <SocialLinks isHeader isLight />
+                    <LanguageSwitcher />
                 </div>
 
                 {/* Mobile Navigation Toggle */}
@@ -112,6 +119,9 @@ const Navbar = () => {
                             {link.name}
                         </a>
                     ))}
+                    <div className="pt-4">
+                        <LanguageSwitcher />
+                    </div>
                 </div>
             </div>
         </nav>

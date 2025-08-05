@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 49 98% 52%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 180 42% 53%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 324 100% 64%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 19 100% 62%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 49 98% 52%;
+
+    --radius: 0.75rem;
+    
+    /* Custom color palette */
+    --yellow: 49 98% 52%;
+    --orange: 19 100% 62%;
+    --pink: 324 100% 64%;
+    --purple: 274 98% 66%;
+    --teal: 180 42% 53%;
+    --green: 130 67% 64%;
+    --blue: 230 93% 69%;
+    --cyan: 193 58% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased font-boldonse;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+
+  html {
+    @apply scroll-smooth font-boldonse;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .glassmorphism {
+    @apply backdrop-blur-lg bg-gradient-to-br from-theme-yellow/20 via-theme-pink/20 to-theme-purple/20 border border-theme-cyan/20 rounded-xl;
+    box-shadow: 0 4px 30px rgba(254, 212, 13, 0.3);
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg;
+    background: linear-gradient(135deg, 
+      hsl(var(--yellow))/10, 
+      hsl(var(--orange))/10, 
+      hsl(var(--pink))/10);
+    box-shadow: 0 4px 10px rgba(254, 212, 13, 0.2);
+  }
+  
+  .card-hover:hover {
+    box-shadow: 0 8px 20px rgba(255, 69, 148, 0.4);
+    background: linear-gradient(135deg, 
+      hsl(var(--yellow))/20, 
+      hsl(var(--orange))/20, 
+      hsl(var(--pink))/20);
+  }
+  
+  .btn-glow {
+    @apply relative overflow-hidden;
+    background: linear-gradient(45deg, 
+      hsl(var(--yellow)), 
+      hsl(var(--orange)), 
+      hsl(var(--pink)), 
+      hsl(var(--purple)));
+    background-size: 400% 400%;
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  .btn-glow::after {
+    @apply content-[''] absolute top-0 left-[-100%] z-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-all duration-500;
+  }
+  
+  .btn-glow:hover::after {
+    @apply left-[100%];
+  }
+  
+  .text-glow {
+    background: linear-gradient(45deg, 
+      hsl(var(--yellow)), 
+      hsl(var(--orange)), 
+      hsl(var(--pink)), 
+      hsl(var(--purple)),
+      hsl(var(--cyan)),
+      hsl(var(--green)));
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 4s ease infinite;
+    filter: drop-shadow(0 0 10px rgba(254, 212, 13, 0.5));
+  }
+  
+  .rainbow-bg {
+    background: linear-gradient(135deg, 
+      hsl(var(--yellow))/80, 
+      hsl(var(--orange))/80, 
+      hsl(var(--pink))/80, 
+      hsl(var(--purple))/80,
+      hsl(var(--teal))/80,
+      hsl(var(--green))/80,
+      hsl(var(--blue))/80,
+      hsl(var(--cyan))/80);
+    background-size: 400% 400%;
+    animation: gradient-shift 6s ease infinite;
+  }
+  
+  .section-padding {
+    @apply py-20 px-6 md:px-12 lg:px-24;
+  }
+  
+  .link-hover {
+    position: relative;
+    background: linear-gradient(45deg, 
+      hsl(var(--cyan)), 
+      hsl(var(--green)), 
+      hsl(var(--blue)));
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  .link-hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, hsl(var(--yellow)), hsl(var(--pink)));
+    transition: all 0.3s;
+  }
+  
+  .link-hover:hover::after {
+    width: 100%;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+}
+
+.calendar-container .react-calendar {
+  @apply glassmorphism border-green-500/10 p-4;
+}
+
+.calendar-container .react-calendar__tile--active {
+  @apply bg-green-500 text-white;
+}
+
+.calendar-container .react-calendar__tile--now {
+  @apply bg-green-500/10 text-green-500;
+}
+
+.calendar-container .react-calendar__navigation button:enabled:hover,
+.calendar-container .react-calendar__navigation button:enabled:focus,
+.calendar-container .react-calendar__tile:enabled:hover,
+.calendar-container .react-calendar__tile:enabled:focus {
+  @apply bg-green-500/10 text-white;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-green-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-green-500;
+}

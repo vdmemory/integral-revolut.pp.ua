@@ -30,7 +30,6 @@ const Navbar = () => {
     }, [location.pathname])
 
     const navLinks = [
-        { name: t('nav.home'), path: '#home' },
         { name: t('nav.services'), path: '#services' },
         { name: t('nav.blog'), path: '#blog' },
         { name: t('nav.faq'), path: '#faq' },

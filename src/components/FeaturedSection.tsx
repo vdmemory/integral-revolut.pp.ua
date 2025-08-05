@@ -100,6 +100,9 @@ const FeaturedSection = () => {
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: 0.2 }}
+                                style={{
+                                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                                }}
                             >
                                 <motion.div
                                     className="bg-psyco-green-DEFAULT inline-block px-3 py-1 text-xs font-medium text-white rounded-full mb-2 self-start"
@@ -159,6 +162,9 @@ const FeaturedSection = () => {
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: 0.2 }}
+                                style={{
+                                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                                }}
                             >
                                 <motion.div
                                     className="bg-psyco-green-DEFAULT inline-block px-3 py-1 text-xs font-medium text-white rounded-full mb-2 self-start"
@@ -218,6 +224,9 @@ const FeaturedSection = () => {
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6, delay: 0.2 }}
+                                style={{
+                                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                                }}
                             >
                                 <motion.div
                                     className="bg-psyco-green-DEFAULT inline-block px-3 py-1 text-xs font-medium text-white rounded-full mb-2 self-start"

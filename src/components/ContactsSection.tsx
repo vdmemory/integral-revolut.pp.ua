@@ -67,7 +67,7 @@ const ContactsSection = () => {
                     variants={itemVariants}
                 >
                     <motion.div
-                        className="max-w-7xl mx-auto flex-1 min-h-[714px]"
+                        className="max-w-7xl mx-auto flex-1"
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
@@ -77,7 +77,7 @@ const ContactsSection = () => {
                     </motion.div>
 
                     <motion.div
-                        className="max-w-7xl mx-auto flex-1 min-h-[714px]"
+                        className="max-w-7xl mx-auto flex-1"
                         initial={{ opacity: 0, x: 50 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}

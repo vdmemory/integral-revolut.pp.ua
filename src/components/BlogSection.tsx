@@ -150,6 +150,7 @@ const BlogSection = () => {
                                 y: -10,
                                 transition: { duration: 0.3 },
                             }}
+                            className={`${post.featured ? 'md:col-span-2 min-h-[378px]' : 'min-h-[378px]'}`}
                         >
                             <BlogPost
                                 {...post}

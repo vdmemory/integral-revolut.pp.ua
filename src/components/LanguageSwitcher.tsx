@@ -16,7 +16,7 @@ const LanguageSwitcher = () => {
         <div className="relative group">
             <button className="flex items-center space-x-2 text-white hover:text-green-400 transition-colors">
                 <Globe size={20} />
-                <span className="text-2xl font-medium">
+                <span className="text-3xl font-medium">
                     {languages.find((lang) => lang.code === language)?.flag}
                 </span>
             </button>

@@ -23,36 +23,6 @@ const Index = () => {
         window.scrollTo(0, 0)
     }, [])
 
-    const featuredServices = [
-        {
-            title: 'Sound System',
-            description:
-                'Professional sound systems for any size venue, from small gatherings to large festivals.',
-            icon: <Volume2 size={24} />,
-            imageSrc:
-                '/lovable-uploads/708f9e32-840d-46a4-aaa4-75ad2689e16f.png',
-            link: '/services#sound',
-        },
-        {
-            title: 'Lighting Equipment',
-            description:
-                'Create the perfect atmosphere with our state-of-the-art lighting equipment and expert setup.',
-            icon: <Lightbulb size={24} />,
-            imageSrc:
-                '/lovable-uploads/becfc2e3-b59f-4f86-afca-b9f6fc7b7c14.png',
-            link: '/services#lighting',
-        },
-        {
-            title: 'DJ Services',
-            description:
-                'Experienced DJs to keep your event energized with the perfect music selection.',
-            icon: <Music2 size={24} />,
-            imageSrc:
-                '/lovable-uploads/03e83f18-76a1-4349-a197-dbde03a93343.png',
-            link: '/services#dj',
-        },
-    ]
-
     return (
         <div>
             <HeroSection />

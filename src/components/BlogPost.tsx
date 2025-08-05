@@ -21,9 +21,6 @@ interface BlogPostProps {
 const BlogPost = ({
     title,
     excerpt,
-    date,
-    readTime,
-    author,
     category,
     imageSrc,
     featured = false,
@@ -34,7 +31,7 @@ const BlogPost = ({
     return (
         <article
             className={cn(
-                'glassmorphism overflow-hidden card-hover',
+                'glassmorphism overflow-hidden card-hover grid',
                 featured ? 'md:col-span-2' : '',
                 className,
             )}

@@ -1,85 +1,35 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { format } from 'date-fns'
-import { toast } from '@/hooks/use-toast'
 import { useLanguage } from '@/contexts/LanguageContext'
+import { configCompany } from '@/lib/configCompany.ts'
 
 const ContactForm = () => {
     const { t } = useLanguage()
-    const [date, setDate] = useState<Date | undefined>(undefined)
-    const [timeSlot, setTimeSlot] = useState<string>('')
-    const [eventType, setEventType] = useState<string>('')
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phone: '',
-        location: '',
-        details: '',
-    })
 
-    const handleInputChange = (
-        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    ) => {
-        const { name, value } = e.target
-        setFormData((prev) => ({ ...prev, [name]: value }))
-    }
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-
-        if (!date || !timeSlot || !eventType) {
-            toast({
-                title: 'Missing information',
-                description: 'Please select a date, time slot, and event type',
-                variant: 'destructive',
-            })
-            return
-        }
-
-        // Here you would normally send the data to your backend
-        console.log({
-            date: date ? format(date, 'yyyy-MM-dd') : '',
-            timeSlot,
-            eventType,
-            ...formData,
-        })
-
-        toast({
-            title: 'Booking request submitted!',
-            description: `We'll contact you soon to confirm your ${eventType} on ${format(date, 'MMMM dd, yyyy')} at ${timeSlot}.`,
-        })
-
-        // Reset form
-        setDate(undefined)
-        setTimeSlot('')
-        setEventType('')
-        setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            location: '',
-            details: '',
-        })
-    }
+    const actionEmail = `https://formsubmit.co/${configCompany.email}`
 
     return (
         <div className="grid gap-8 md:grid-cols-1">
             <div
                 className="glassmorphism p-6 animate-fade-in animation-delay-100"
                 style={{
-                    backgroundColor: 'darkseagreen',
+                    backgroundColor: 'darkslateblue',
                 }}
             >
                 <div className="flex items-center space-x-2 mb-4">
                     <div>
-                        <h2 className="text-3xl font-bold text-white mb-4">{t('contact.title')}</h2>
-                        <p className="text-gray-300 mb-6">{t('contact.description')}</p>
+                        <h2 className="text-3xl font-bold text-white mb-4">
+                            {t('contact.title')}
+                        </h2>
+                        <p className="text-gray-300 mb-6">
+                            {t('contact.description')}
+                        </p>
                     </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form action={actionEmail} method="POST" className="space-y-4">
                     <div>
                         <label
                             htmlFor="name"
@@ -90,10 +40,8 @@ const ContactForm = () => {
                         <Input
                             id="name"
                             name="name"
-                            value={formData.name}
-                            onChange={handleInputChange}
                             required
-                            className="bg-psyco-black-light border-psyco-green-muted/50"
+                            className="bg-psyco-black-light border-psyco-green-muted/50 text-gray-900"
                         />
                     </div>
 
@@ -108,10 +56,8 @@ const ContactForm = () => {
                             id="email"
                             name="email"
                             type="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
                             required
-                            className="bg-psyco-black-light border-psyco-green-muted/50"
+                            className="bg-psyco-black-light border-psyco-green-muted/50 text-gray-900"
                         />
                     </div>
 
@@ -125,10 +71,8 @@ const ContactForm = () => {
                         <Input
                             id="phone"
                             name="phone"
-                            value={formData.phone}
-                            onChange={handleInputChange}
                             required
-                            className="bg-psyco-black-light border-psyco-green-muted/50"
+                            className="bg-psyco-black-light border-psyco-green-muted/50 text-gray-900"
                         />
                     </div>
 
@@ -142,10 +86,8 @@ const ContactForm = () => {
                         <Input
                             id="company"
                             name="company"
-                            value={formData.location}
-                            onChange={handleInputChange}
                             required
-                            className="bg-psyco-black-light border-psyco-green-muted/50"
+                            className="bg-psyco-black-light border-psyco-green-muted/50 text-gray-900"
                         />
                     </div>
 
@@ -160,9 +102,7 @@ const ContactForm = () => {
                             id="details"
                             name="details"
                             rows={3}
-                            value={formData.details}
-                            onChange={handleInputChange}
-                            className="bg-psyco-black-light border-psyco-green-muted/50"
+                            className="bg-psyco-black-light border-psyco-green-muted/50 text-gray-900"
                             placeholder={t('contact.project.placeholder')}
                         />
                     </div>

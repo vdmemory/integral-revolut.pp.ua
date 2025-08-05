@@ -11,17 +11,17 @@ const SocialLinks = ({
 }) => {
     const socialLinks = [
         {
-            icon: 'public/uploads/facebook.png',
+            icon: 'uploads/facebook.png',
             href: configCompany.facebook,
             color: '#A01F5D',
         },
         {
-            icon: 'public/uploads/insta.png',
+            icon: 'uploads/insta.png',
             href: configCompany.instagram,
             color: '#FBB216',
         },
         {
-            icon: 'public/uploads/upwork.png',
+            icon: 'uploads/upwork.png',
             href: configCompany.upwork,
             color: '#64B232',
         },
